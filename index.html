@@ -34,10 +34,13 @@
                             <label for="endHour"></label>
                             <input type="time" class="form-control" id="endHour" placeholder="endHour">
                         </div>
-                        <button class="btn btn-primary" onclick="saveTask()">Save</button>
+                        <button class="btn btn-primary" onclick=" return saveTask()">Save</button>
                         <button type="reset" class="btn btn-primary">Clear</button>
                     </form>
                 </div>
+            </div>
+            <div class="row" id="notes">
+             
             </div>
         </div>
         <footer>
@@ -45,3 +48,9 @@
         </footer>
     </body>   
 </html>
+
+<script>
+$(document).ready(function () {
+    buildNotes();
+});
+</script>
