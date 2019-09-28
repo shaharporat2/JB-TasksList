@@ -19,15 +19,24 @@
         </header>
         </br>
         <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <img src="./imgs/formbg.jpg" alt="formbg">
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <img src="./imgs/formbg.jpg" alt="formbg">
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <img src="./imgs/formbg.jpg" alt="formbg">
+            <div class="row">
+                <div class="all-form-group col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="taskDetail"></label>
+                            <input type="text" class="form-control" id="taskDetail" aria-describedby="taskDetail" placeholder="Task detail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate"></label>
+                            <input type="date" class="form-control" id="endDate" placeholder="endDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endHour"></label>
+                            <input type="time" class="form-control" id="endHour" placeholder="endHour">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveTask()">Save</button>
+                        <button type="reset" class="btn btn-primary">Clear</button>
+                    </form>
                 </div>
             </div>
         </div>

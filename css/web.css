@@ -1,3 +1,8 @@
 body  {
     background-image: url('../imgs/tile.jpg');
 }
+
+.all-form-group {
+    background-image: url('../imgs/formbg.jpg');
+    align-items: center
+  }
