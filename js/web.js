@@ -26,11 +26,11 @@ function saveTask(){
 
 function buildNotes(){
     for (i = 0; i < localStorage.length; i++) {
-        addNote();
+        addNote(i);
       }
 }
 
-function addNote(){
+function addNote(i){
     notesBord = document.getElementById("notes");
 
     var task;
