@@ -101,20 +101,20 @@ function addNote(i){
 }
 
 function deleteNote(i){
-    i= (i.id.slice(-1));
+    i= (i.id.slice(10));
     document.getElementById("note"+i).remove();
     localStorage.removeItem(i)
     
 }
 
 function displayRemoveNote(i){
-    i= (i.id.slice(-1));
+    i= (i.id.slice(4));
     el = 'removeNote' + i;
     document.getElementById(el).style.visibility = "visible";
 }
 
 function undisplayRemoveNote(i){
-    i= (i.id.slice(-1));
+    i= (i.id.slice(4));
     el = 'removeNote' + i;
     document.getElementById(el).style.visibility = "hidden";
 }
