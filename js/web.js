@@ -19,8 +19,8 @@ function saveTask(){
                 'endHour' : endHour
             }
             localStorage.setItem(task.id, JSON.stringify(task));
+            addNote(indexTask);
             indexTask++;
-            addNote();
     }
 }
 
@@ -31,16 +31,57 @@ function buildNotes(){
 }
 
 function addNote(i){
+
+    // fetching the "notes" section where all the notes are being saved
     notesBord = document.getElementById("notes");
 
+
+    // 
     var task;
     var note;
+    var spanEl;
 
+    // creating a wrapper div element for a task
     task = document.createElement("DIV");
-    task.setAttribute("class","col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2");
+    task.setAttribute("class","col-12 col-sm-12 col-md-6 col-lg-4 col-xl-2");
+    task.setAttribute("id","note"+i);
+    task.setAttribute("onmouseover","displayRemoveNote(this)");
+    task.setAttribute("onmouseout","undisplayRemoveNote(this)");
+
+
+    // creting an img elemet 
     note = document.createElement("IMG");
     note.setAttribute("src", "./imgs/notebg.png");
-    note.setAttribute("class", "note");
+    note.setAttribute("class","note");
+
+    
+    // creating span element for exit
+    spanEl = document.createElement("SPAN");
+    spanEl.setAttribute("class","glyphicon glyphicon-remove glyphRemove");
+    spanEl.setAttribute("onclick","deleteNote(this)");
+    spanEl.setAttribute("id","removeNote"+i);
+    
+    // creating the entire note elements
+    task.appendChild(spanEl);
     task.appendChild(note);
     notesBord.appendChild(task);
+}
+
+function deleteNote(i){
+    i= (i.id.slice(-1));
+    document.getElementById("note"+i).remove();
+    localStorage.removeItem(i)
+    
+}
+
+function displayRemoveNote(i){
+    i= (i.id.slice(-1));
+    el = 'removeNote' + i;
+    document.getElementById(el).style.visibility = "visible";
+}
+
+function undisplayRemoveNote(i){
+    i= (i.id.slice(-1));
+    el = 'removeNote' + i;
+    document.getElementById(el).style.visibility = "hidden";
 }

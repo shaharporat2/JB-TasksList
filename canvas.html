@@ -1,0 +1,16 @@
+<p>Canvas:</p>
+<canvas id="myCanvas" width="200" height="255">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+var context = document.getElementById('myCanvas').getContext("2d");
+	
+    var img = new Image();
+    img.onload = function () {
+        context.drawImage(img, 0, 0);
+    }
+    img.src = "./imgs/notebg.png";
+    context.font = "30px Arial";
+    context.fillText("Hello, World,10,50")
+</script>
