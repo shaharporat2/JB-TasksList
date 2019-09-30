@@ -2,6 +2,13 @@ body  {
     background-image: url('../imgs/tile.jpg');
 }
 
+.mainHeader {
+    font-family: 'Mansalva', cursive;
+    /* color: brown; */
+    font-size: 48px;
+}
+
+
 .all-form-group {
     background-image: url('../imgs/formbg.jpg');
     align-items: center

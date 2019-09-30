@@ -45,7 +45,7 @@ function addNote(i){
     notesBord = document.getElementById("notes");
 
 
-    // 
+    
     var taskObj = JSON.parse(localStorage.getItem(i))
     var task;
     var note;
