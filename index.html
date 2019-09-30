@@ -22,10 +22,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="all-form-group col-6 offset-3 col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
-                    <form>
+                    <form id="addTaskForm">
                         <div class="form-group">
+                            <br>
                             <label for="taskDetail"></label>
-                            <input type="text" class="form-control" id="taskDetail" aria-describedby="taskDetail" placeholder="Task detail" required>
+                            <!-- <input type="text" class="form-control" id="taskDetail" aria-describedby="taskDetail" placeholder="Task detail" required> -->
+                            <textarea class="form-control rounded-0" id="taskDetail" placeholder="Task detail" required rows="10"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="endDate"></label>
@@ -41,7 +43,7 @@
                 </div>
             </div>
             <div class="row" id="notes">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-2" id="note1"  onmouseover="displayRemoveNote(this)" onmouseout="undisplayRemoveNote(this)">
+                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-2" id="note1"  onmouseover="displayRemoveNote(this)" onmouseout="undisplayRemoveNote(this)">
                     <span class="glyphicon glyphicon-remove glyphRemove" onclick="deleteNote(this)" id="removeNote1"> </span>
                     <img src="./imgs/notebg.png" alt="note">
                     <span class="taskText"> sfsdfsdaasdadsasdads`fsdfsdfsdfds
@@ -54,11 +56,10 @@
             adsadasdasdasdasdasdasdsadasdasdasd
             adsadasdasdasdasdasdasdsadasdasdasd
             dasdasdadasdasdasd
-            
+
                     </span>
                     <span class="taskDate"> 12/5/1990 </span>
-                    <span class="taskTime"> 00:00 </span>
-                </div>
+                    <span class="taskTime"> 00:00 </span> -->
             </div>
         </div>
         <footer>
@@ -69,5 +70,6 @@
 <script>
 $(document).ready(function () {
     buildNotes();
+
 });
 </script>

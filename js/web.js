@@ -2,8 +2,6 @@
 
 //TODO - Adding appropriate validation 
 
-//TODO - Transition Only in when adding the note
-
 function saveTask(){
     var taskDetail=document.getElementById('taskDetail').value;
     var endDate=document.getElementById('endDate').value;
@@ -11,22 +9,33 @@ function saveTask(){
 
     if(taskDetail != "" && endDate != ""){
         
-            var indexTask = localStorage.length;
+            if(localStorage.getItem("indexTask") == undefined){
+                localStorage.setItem("indexTask",0);
+            }
             var task = { 
-                'id' : indexTask,
+                'id' : localStorage.getItem("indexTask"),
                 'taskDetail' : taskDetail,
                 'endDate' : endDate,
                 'endHour' : endHour
             }
             localStorage.setItem(task.id, JSON.stringify(task));
-            addNote(indexTask);
-            indexTask++;
+            addNote(localStorage.getItem("indexTask"));
+
+            var x = parseInt(localStorage.getItem("indexTask"))+1
+            localStorage.setItem("indexTask",x)
+            document.getElementById("addTaskForm").reset();
+            return false;
     }
 }
 
 function buildNotes(){
-    for (i = 0; i < localStorage.length; i++) {
-        addNote(i);
+
+    for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+        y = localStorage.key( i )
+        if(y != "indexTask"){
+            var taskObj1 = JSON.parse(localStorage.getItem(y))
+            addNote(taskObj1.id);
+        }
       }
 }
 
@@ -37,9 +46,13 @@ function addNote(i){
 
 
     // 
+    var taskObj = JSON.parse(localStorage.getItem(i))
     var task;
     var note;
     var spanEl;
+    var spanDateEl;
+    var spanTimeEl;
+    var spanTextEl;
 
     // creating a wrapper div element for a task
     task = document.createElement("DIV");
@@ -60,10 +73,30 @@ function addNote(i){
     spanEl.setAttribute("class","glyphicon glyphicon-remove glyphRemove");
     spanEl.setAttribute("onclick","deleteNote(this)");
     spanEl.setAttribute("id","removeNote"+i);
+
+    // creating text span element
+    spanTextEl = document.createElement('SPAN');
+    spanTextEl.setAttribute("class","taskText");
+    spanTextEl.innerText = taskObj.taskDetail;
+
+    // creating date span element
+    spanDateEl = document.createElement('SPAN');
+    spanDateEl.setAttribute("class","taskDate");
+    spanDateEl.innerHTML = taskObj.endDate;
+
+
+    // creating time span element
+    spanTimeEl = document.createElement('SPAN');
+    spanTimeEl.setAttribute("class","taskTime");
+    spanTimeEl.innerHTML = taskObj.endHour;
+
     
     // creating the entire note elements
     task.appendChild(spanEl);
     task.appendChild(note);
+    task.appendChild(spanTextEl);
+    task.appendChild(spanDateEl);
+    task.appendChild(spanTimeEl);
     notesBord.appendChild(task);
 }
 
