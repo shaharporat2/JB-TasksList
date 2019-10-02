@@ -66,6 +66,10 @@ body  {
     visibility: hidden;
 }
 
+.pastNote{
+  background: red;
+}
+
 
 @keyframes fadein {
     from { opacity: 0; }

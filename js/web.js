@@ -57,6 +57,13 @@ function addNote(i){
     // creating a wrapper div element for a task
     task = document.createElement("DIV");
     task.setAttribute("class","col-12 col-sm-12 col-md-6 col-lg-4 col-xl-2");
+
+
+    var selectedDate = new Date(taskObj.endDate);
+    var now = new Date();
+    if (selectedDate < now) {
+        task.setAttribute("class","ol-12 col-sm-12 col-md-6 col-lg-4 col-xl-2 pastNote");
+    }
     task.setAttribute("id","note"+i);
     task.setAttribute("onmouseover","displayRemoveNote(this)");
     task.setAttribute("onmouseout","undisplayRemoveNote(this)");
@@ -127,7 +134,7 @@ function checkDate() {
     var now = new Date();
     if (selectedDate < now) {
      alert("Date must be in the future");
-     return false
+     return false;
     }
     return true;
   }
