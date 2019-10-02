@@ -7,7 +7,7 @@ function saveTask(){
     var endDate=document.getElementById('endDate').value;
     var endHour=document.getElementById('endHour').value;
 
-    if(taskDetail != "" && endDate != ""){
+    if(taskDetail != "" && endDate != "" && checkDate() ){
         
             if(localStorage.getItem("indexTask") == undefined){
                 localStorage.setItem("indexTask",0);
@@ -118,3 +118,16 @@ function undisplayRemoveNote(i){
     el = 'removeNote' + i;
     document.getElementById(el).style.visibility = "hidden";
 }
+
+// Date validation
+
+function checkDate() {
+    var selectedText = document.getElementById('endDate').value;
+    var selectedDate = new Date(selectedText);
+    var now = new Date();
+    if (selectedDate < now) {
+     alert("Date must be in the future");
+     return false
+    }
+    return true;
+  }
