@@ -60,6 +60,10 @@ function addNote(i){
 
 
     var selectedDate = new Date(taskObj.endDate);
+    var selectedHour=taskObj.endHour;
+    selectedDate.setMinutes(selectedHour.split(":")[1]);
+    selectedDate.setHours(selectedHour.split(":")[0]);
+
     var now = new Date();
     if (selectedDate < now) {
         task.setAttribute("class","ol-12 col-sm-12 col-md-6 col-lg-4 col-xl-2 pastNote");
@@ -130,9 +134,13 @@ function undisplayRemoveNote(i){
 
 function checkDate() {
     var selectedText = document.getElementById('endDate').value;
+    var selectedHour=document.getElementById('endHour').value;
     var selectedDate = new Date(selectedText);
+
+    selectedDate.setMinutes(selectedHour.split(":")[1]);
+    selectedDate.setHours(selectedHour.split(":")[0]);
     var now = new Date();
-    if (selectedDate < now) {
+    if (selectedDate < now ) {
      alert("Date must be in the future");
      return false;
     }
