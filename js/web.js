@@ -137,8 +137,16 @@ function checkDate() {
     var selectedHour=document.getElementById('endHour').value;
     var selectedDate = new Date(selectedText);
 
-    selectedDate.setMinutes(selectedHour.split(":")[1]);
-    selectedDate.setHours(selectedHour.split(":")[0]);
+    console.info(selectedHour);
+    if(selectedHour == "" ){
+        selectedDate.setMinutes(00);
+        selectedDate.setHours(00);
+
+    }else{
+        selectedDate.setMinutes(selectedHour.split(":")[1]);
+        selectedDate.setHours(selectedHour.split(":")[0]);
+    }
+
     var now = new Date();
     if (selectedDate < now ) {
      alert("Date must be in the future");
