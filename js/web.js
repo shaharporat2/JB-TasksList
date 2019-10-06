@@ -61,8 +61,15 @@ function addNote(i){
 
     var selectedDate = new Date(taskObj.endDate);
     var selectedHour=taskObj.endHour;
-    selectedDate.setMinutes(selectedHour.split(":")[1]);
-    selectedDate.setHours(selectedHour.split(":")[0]);
+    
+    if(selectedHour == "" ){
+        selectedDate.setMinutes(00);
+        selectedDate.setHours(00);
+
+    }else{
+        selectedDate.setMinutes(selectedHour.split(":")[1]);
+        selectedDate.setHours(selectedHour.split(":")[0]);
+    }
 
     var now = new Date();
     if (selectedDate < now) {
